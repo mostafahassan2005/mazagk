@@ -7,7 +7,7 @@ html {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   text-align: center;
-  background-color: #52708e;
+  background-color: #ffffff;
 }
 
 /* Navigation Styles */
@@ -83,20 +83,22 @@ html {
 
 #Design {
   color: #f2f6fa;
-  background-color: #b19b1d;
+  background-color: #1a4e97;
 }
 
 #Design:hover {
-  background: #00c3ff;
+  background:#0fb2dfb3;
+  ;
 }
 
 #ready {
   color: #f2f6fa;
-  background-color: #870f0d;
+  background-color: #1a4e97;
 }
 
 #ready:hover {
-  background: #1f5baf;
+  background: #0f65dfb3;
+  ;
 }
 
 #hot-number {
@@ -117,6 +119,8 @@ html {
 #Welcome {
   color: #1f5baf;
   font-weight: bold;
+  position: relative;
+  top: -41px;
 }
 
 #text1 {
@@ -151,7 +155,7 @@ html {
 #box1:hover,
 #box2:hover,
 #box3:hover {
-  background: #7c3138;
+  background: #0f65dfb3;
 }
 
 .text {
@@ -165,7 +169,7 @@ html {
   font-size: 22px;
   position: relative;
   right: -27px;
-  top: -26px;
+  top: 3px;
 }
 .pragraph {
   flex: 1;
@@ -176,7 +180,7 @@ html {
   font-stretch: condensed;
   position: relative;
   right: -27px;
-  top: -26px;
+  top: -9px;
 }
 #pragraph {
   flex: 1;
@@ -268,7 +272,28 @@ img.tshart {
     flex-direction: column;
     align-items: center;
     transform: scale(0.8) translateX(20px) translateY(40px);
-    transform-origin: top left;
+    transform-origin: top left; 
+    position: relative;
+    font-size: 10px;
+  }
+  .pragraph{
+    flex: 1;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-stretch: condensed;
+    position: relative;
+    right: -27px;
+    top: -26px
+  }
+  
+  #Welcome {
+    color: #1f5baf;
+    font-weight: bold;
+    position: relative;
+    top: -41px;
+    font-size: 21px;
   }
 }
 
