@@ -87,8 +87,7 @@ html {
 }
 
 #Design:hover {
-  background:#0fb2dfb3;
-  ;
+  background: #0fb2dfb3;
 }
 
 #ready {
@@ -98,7 +97,6 @@ html {
 
 #ready:hover {
   background: #0f65dfb3;
-  ;
 }
 
 #hot-number {
@@ -168,7 +166,7 @@ html {
   align-items: center;
   font-size: 22px;
   position: relative;
-  right: -27px;
+  right: -276px;
   top: 3px;
 }
 .pragraph {
@@ -179,8 +177,8 @@ html {
   font-size: 22px;
   font-stretch: condensed;
   position: relative;
-  right: -27px;
-  top: -9px;
+  right: -125px;
+  top: -26px;
 }
 #pragraph {
   flex: 1;
@@ -202,6 +200,8 @@ html {
 img.tshart {
   max-width: 30%;
   height: auto;
+  position: relative;
+  right: 280px;
 }
 
 /* Contact Section */
@@ -248,6 +248,9 @@ img.tshart {
 
 /* Responsive */
 @media (max-width: 768px) {
+  #top-page {
+    font-size: 18px;
+  }
   .nav-menu {
     display: none;
     flex-direction: column;
@@ -272,11 +275,11 @@ img.tshart {
     flex-direction: column;
     align-items: center;
     transform: scale(0.8) translateX(20px) translateY(40px);
-    transform-origin: top left; 
+    transform-origin: top left;
     position: relative;
     font-size: 10px;
   }
-  .pragraph{
+  .pragraph {
     flex: 1;
     padding-right: 20px;
     display: flex;
@@ -285,9 +288,9 @@ img.tshart {
     font-stretch: condensed;
     position: relative;
     right: -27px;
-    top: -26px
+    top: -26px;
   }
-  
+
   #Welcome {
     color: #1f5baf;
     font-weight: bold;
