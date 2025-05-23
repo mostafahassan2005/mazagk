@@ -1,0 +1,153 @@
+<!-- <body>
+  <style>
+    .sketchfab-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      z-index: 999;
+    }
+  
+    @media (max-width: 768px) {
+      .sketchfab-fullscreen {
+        height: 100vh;
+      }
+    }
+  </style>
+  
+  <div class="sketchfab-embed-wrapper">
+    <iframe
+      class="sketchfab-fullscreen"
+      title="Hoodie with hood up"
+      allowfullscreen
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true"
+      allow="autoplay; fullscreen; xr-spatial-tracking"
+      xr-spatial-tracking
+      execution-while-out-of-viewport
+      execution-while-not-rendered
+      web-share
+      src="https://sketchfab.com/models/237449b193714dfaa13b9a4d9d2b9a90/embed?autostart=1&camera=0&preload=1&ui_hint=0&ui_theme=dark&dnt=1">
+    </iframe>
+  </div>
+  </body>
+    -->
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>3D T-Shirt Color Customizer</title>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          height: 100vh;
+          overflow: hidden;
+        }
+    
+        .viewer {
+          flex: 1;
+        }
+    
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+    
+        .controls {
+          width: 300px;
+          background: #1e1e1e;
+          color: white;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+    
+        label {
+          display: block;
+          margin-bottom: 10px;
+          font-weight: bold;
+        }
+    
+        input[type="color"] {
+          width: 100%;
+          height: 40px;
+          border: none;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="viewer">
+        <iframe
+          id="api-frame"
+          title="Hoodie with hood up"
+          src="https://sketchfab.com/models/237449b193714dfaa13b9a4d9d2b9a90/embed?autostart=1&ui_hint=0&ui_theme=dark&dnt=1&transparent=1"
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          allowfullscreen
+        ></iframe>
+      </div>
+    
+      <div class="controls">
+        <label for="colorPicker">اختر لون التيشيرت / Choose T-Shirt Color</label>
+        <input type="color" id="colorPicker" value="#ffffff" />
+      </div>
+    
+      <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+      <script>
+        const iframe = document.getElementById('api-frame');
+        const client = new Sketchfab(iframe);
+        const colorInput = document.getElementById('colorPicker');
+    
+        let api;
+    
+        client.init('237449b193714dfaa13b9a4d9d2b9a90', {
+          success: function (apiInstance) {
+            api = apiInstance;
+            api.start();
+            api.addEventListener('viewerready', function () {
+              // احصل على المواد (materials)
+              api.getMaterialList((err, materials) => {
+                if (err) return console.error('Error getting materials:', err);
+    
+                console.log('Materials:', materials); // راقب اسم المادة المستهدفة
+    
+                const hoodieMaterial = materials.find(mat => mat.name.toLowerCase().includes("hoodie")); // أو غيّر الاسم حسب الحاجة
+    
+                if (!hoodieMaterial) {
+                  console.warn("Material not found!");
+                  return;
+                }
+    
+                colorInput.addEventListener('input', () => {
+                  const hex = colorInput.value;
+                  const rgb = hexToRgb01(hex); // نحول للـ format اللي Sketchfab بيستخدمه
+    
+                  hoodieMaterial.channels.AlbedoPBR.color = [rgb.r, rgb.g, rgb.b];
+                  api.setMaterial(hoodieMaterial);
+                });
+              });
+            });
+          },
+          error: function () {
+            console.error('Sketchfab API error');
+          }
+        });
+    
+        // Function to convert HEX to normalized RGB
+        function hexToRgb01(hex) {
+          const bigint = parseInt(hex.slice(1), 16);
+          const r = ((bigint >> 16) & 255) / 255;
+          const g = ((bigint >> 8) & 255) / 255;
+          const b = (bigint & 255) / 255;
+          return { r, g, b };
+        }
+      </script>
+    </body>
+    </html>
+    

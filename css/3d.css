@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+body.dark-mode {
+  background-color: #000;
+  color: white;
+}
+
+/* === Dark Mode Toggle Button === */
+.checkbox-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.checkbox-wrapper .label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper svg {
+  margin-right: 8px;
+}
+
+.path1 {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 0.5s;
+  opacity: 0;
+}
+
+.check:checked + label svg g path.path1 {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* === Navigation Bar === */
+.nav-wrap {
+  background: #1279df;
+  padding: 15px 12%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: rgb(158, 158, 165);
+}
+/* dark mode جمب  */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* التحكم ف الخط و اللون والحجم */
+.nav-button {
+  color: #e4dbea;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  display: flex;
+}
+
+.nav-button:hover {
+  background-color: #000;
+}
+
+/* === Main Section === */
+.container {
+  max-width: 600px;
+  margin: 120px auto 0;
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.dark-mode .container {
+  background-color: #111;
+}
+
+.text h1 {
+  font-size: 28px;
+  color: #222;
+}
+
+body.dark-mode h1 {
+  color: #eee;
+}
+
+.text p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0 20px;
+}
+
+body.dark-mode p {
+  color: #ccc;
+}
+
+.create-btn {
+  background-color: #5a2cd4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-btn:hover {
+  background-color: #000;
+}
+
+.mockup img {
+  max-width: 100%;
+  border-radius: 25px;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.H-3D .box-3D img {
+  width: 300px; /* Adjust this value as needed */
+  aspect-ratio: 3/4; /* To keep consistent proportions */
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid black;
+  transition: border-color 0.3s ease;
+}
+
+body.dark-mode .H-3D .box-3D img {
+  border-color: white;
+}
+.H-3D {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.H-3D .box-3D {
+  flex-basis: 300px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.H-3D .box-3D img {
+  width: 100%;
+  height:500px;
+  border-radius: 20px;
+  border: 3px solid black;
+  transition: border-color 0.3s ease;
+}
+
+/* Dark mode border */
+body.dark-mode .H-3D .box-3D img {
+  border-color: white;
+}
+
+.Hoodiet1:hover,
+.t-shert2:hover {
+  box-shadow: 0 0 15px #00c3ff;
+  border-radius: 25px;
+}
+
+/* === Video Section === */
+.background-video-2 video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* === Flex Section === */
+.flex-container {
+  padding: 20px;
+}
+
+.Get {
+  background-color: #5a2cd4;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.Get:hover {
+  background: #000;
+}
+
+/* === Contact Section === */
+.Contact {
+  padding: 30px 15px;
+  text-align: start;
+}
+
+.mazagk img {
+  width: 200px;
+  margin: 20px 0;
+}
+
+.soshial img {
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #00c3ff;
+  width: 25px;
+  height: 25px;
+  transition: 0.5s;
+}
+
+.soshial img:hover {
+  background: #fff;
+  box-shadow: 0 0 5px #00c3ff, 0 0 15px #00c3ff;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 41px;
+    padding: 46px;
+    width: 326px;
+    height: 562px;
+  }
+
+  .nav-menu,
+  .nav-wrap,
+  .img {
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .H-3D {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .H-3D .box-3D img {
+    width: 364px;
+    border: 3px solid black;
+    border-radius: 25px;
+    transition: border-color 0.3s ease;
+  }
+  .H-3D .box-3D img {
+    width: 99%;
+    height: 371px;
+    border-radius: 20px;
+    border: 3px solid black;
+    transition: border-color 0.3s ease;
+  }
+
+  /* Dark mode border */
+  body.dark-mode .H-3D .box-3D img {
+    border-color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .text h1 {
+    font-size: 24px;
+  }
+
+  .text p {
+    font-size: 14px;
+  }
+
+  .Get {
+    padding: 10px 20px;
+  }
+}
+
+.video {
+  border: 1px solid black;
+}

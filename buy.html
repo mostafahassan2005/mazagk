@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>متجر التيشيرتات</title>
+    <link rel="stylesheet" href="css/buy.css" />
+  </head>
+  <body>
+    <header>
+       <img src="./photo/logo.jpeg" alt="Logo" width="120" />
+      <a class="cart-icon" href="">home</a>
+      <div  id="cart-icon" title="سلة التسوق" onclick="toggleCart()">
+        🛒
+        <span id="cart-count">0</span>
+      </div>
+    </header>
+
+    <div class="products-container" id="products-container">
+      <!-- سيتم تعبئة المنتجات هنا بواسطة JavaScript -->
+    </div>
+
+    <!-- مودال تفاصيل المنتج -->
+    <div
+      id="details"
+      class="details-modal"
+      onclick="if(event.target===this) closeDetails()"
+    >
+      <div id="details-content">
+        <span class="close-btn" onclick="closeDetails()">×</span>
+        <div id="main-image-container">
+          <img id="main-image" src="" alt="صورة المنتج" />
+          <div id="extra-images-container" style="margin-top: 10px"></div>
+        </div>
+        <div class="details-info">
+          <div><strong>الاسم:</strong> <span id="product-name"></span></div>
+          <div><strong>السعر:</strong> <span id="price"></span></div>
+          <div>
+            <label for="sizes-select">المقاس:</label>
+            <select id="sizes-select"></select>
+          </div>
+          <div>
+            <label for="colors-select">اللون:</label>
+            <select id="colors-select"></select>
+          </div>
+          <button class="add-to-cart" onclick="addToCart()">
+            إضافة إلى السلة
+          </button>
+        </div>
+      </div>
+    </div>
+    <img src="" alt="">
+    <!-- مودال سلة التسوق -->
+    <div
+      id="cart"
+      class="cart-modal"
+      onclick="if(event.target===this) toggleCart()"
+    >
+      <div id="cart-content">
+        <span class="close-btn" onclick="toggleCart()">×</span>
+        <h2>سلة التسوق</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+      </div>
+    </div>
+    
+    <script>
+      // بيانات المنتجات - 20 منتج مع السعر، المقاسات، والألوان
+      const productsData = [
+        {
+          name: "تصميم 1",
+          price: 10,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر", "أسود"],
+          mainImage: "./t-shert/a-she-1.png",
+          extraImages: [
+            "./t-shert/a-sher-1.png",
+            "./t-shert/a-she-1.png",
+            "./t-shert/a-shret-1.png",
+          ],
+        },
+        {
+          name: "تصميم 2",
+          price: 20,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر", "أسود"],
+          mainImage: "./t-shert/b-shr-2.png",
+          extraImages: [
+            "/t-shert/b-shre-2.png",
+            "./t-shert/b-shret-2.png",
+            "./t-shert/b-shr-2.png",
+          ],
+        },
+        {
+          name: "تصميم 3",
+          price: 30,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: [
+            "./photo/tshirt3-back.jpg",
+            "./photo/tshirt3-model.jpg",
+            "./photo/tshirt3-detail.jpg",
+          ],
+        },
+        {
+          name: "تصميم 4",
+          price: 40,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أزرق", "أصفر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: [
+            "./photo/tshirt3-back.jpg",
+            "./photo/tshirt3-model.jpg",
+            "./photo/tshirt3-detail.jpg",
+          ],
+        },
+        {
+          name: "تصميم 5",
+          price: 50,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أبيض", "أسود"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 6",
+          price: 60,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: [
+            "./photo/tshirt3-back.jpg",
+            "./photo/tshirt3-model.jpg",
+          ],
+        },
+        {
+          name: "تصميم 7",
+          price: 70,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أزرق", "أخضر", "أسود"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 8",
+          price: 80,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أصفر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: [
+            "./photo/tshirt3-back.jpg",
+            "./photo/tshirt3-model.jpg",
+          ],
+        },
+        {
+          name: "تصميم 9",
+          price: 70,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أخضر", "أصفر", "أسود"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 10",
+          price: 80,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أزرق", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: [
+            "./photo/tshirt3-back.jpg",
+            "./photo/tshirt3-model.jpg",
+          ],
+        },
+        {
+          name: "تصميم 11",
+          price: 90,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر", "أسود"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/Hoodiet-3D.jpeg"],
+        },
+        {
+          name: "تصميم 12",
+          price: 100,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أصفر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-model.jpg"],
+        },
+        {
+          name: "تصميم 13",
+          price: 200,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 14",
+          price: 300,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أزرق", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-detail.jpg"],
+        },
+        {
+          name: "تصميم 15",
+          price: 400,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أصفر"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 16",
+          price: 500,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أخضر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-back.jpg"],
+        },
+        {
+          name: "تصميم 17",
+          price: 600,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أخضر"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 18",
+          price: 700,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أزرق", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-model.jpg"],
+        },
+        {
+          name: "تصميم 19",
+          price: 800,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أحمر", "أصفر"],
+          mainImage: "./photo/Hoodiet-3D.jpeg",
+          extraImages: ["./photo/logo.jpeg"],
+        },
+        {
+          name: "تصميم 20",
+          price: 900,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أخضر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-detail.jpg"],
+        },
+        {
+          name: "تصميم 21",
+          price: 1000,
+          sizes: ["S", "M", "L", "XL"],
+          colors: ["أخضر", "أسود"],
+          mainImage: "./photo/tshirt3-front.jpg",
+          extraImages: ["./photo/tshirt3-detail.jpg"],
+        },
+      ];
+
+      let cart = [];
+
+      // تهيئة وعرض المنتجات في الصفحة
+      function loadProducts() {
+        const container = document.getElementById("products-container");
+        container.innerHTML = "";
+        productsData.forEach((product, index) => {
+          const div = document.createElement("div");
+          div.classList.add("product");
+          div.dataset.index = index; // لتسهيل الوصول للبيانات لاحقاً
+          div.innerHTML = `
+        <img src="${product.mainImage}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <div style="font-weight:bold; margin-top:5px;">${product.price} جنيه</div>
+      `;
+          div.addEventListener("click", () => showDetails(index));
+          container.appendChild(div);
+        });
+      }
+
+      // تحديث عداد السلة في الهيدر
+      function updateCartCount() {
+        const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+        const countSpan = document.getElementById("cart-count");
+        if (count > 0) {
+          countSpan.style.display = "inline-block";
+          countSpan.textContent = count;
+        } else {
+          countSpan.style.display = "none";
+        }
+      }
+
+      // فتح مودال تفاصيل المنتج
+      function showDetails(index) {
+        const product = productsData[index];
+        document.getElementById("product-name").textContent = product.name;
+        document.getElementById("price").textContent = product.price + " جنيه";
+
+        const mainImage = document.getElementById("main-image");
+        mainImage.src = product.mainImage;
+        mainImage.alt = product.name;
+
+        const extraImagesContainer = document.getElementById(
+          "extra-images-container"
+        );
+        extraImagesContainer.innerHTML = "";
+        product.extraImages.forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = product.name;
+          img.onclick = () => {
+            mainImage.src = src;
+          };
+          extraImagesContainer.appendChild(img);
+        });
+
+        // تعبئة خيارات المقاسات
+        const sizesSelect = document.getElementById("sizes-select");
+        sizesSelect.innerHTML = "";
+        product.sizes.forEach((size) => {
+          const option = document.createElement("option");
+          option.value = size;
+          option.textContent = size;
+          sizesSelect.appendChild(option);
+        });
+
+        // تعبئة خيارات الألوان
+        const colorsSelect = document.getElementById("colors-select");
+        colorsSelect.innerHTML = "";
+        product.colors.forEach((color) => {
+          const option = document.createElement("option");
+          option.value = color;
+          option.textContent = color;
+          colorsSelect.appendChild(option);
+        });
+
+        // حفظ المنتج الحالي للاضافة للسلة
+        document.getElementById("details-content").dataset.currentIndex = index;
+
+        document.getElementById("details").style.display = "flex";
+      }
+
+      // إغلاق مودال التفاصيل
+      function closeDetails() {
+        document.getElementById("details").style.display = "none";
+      }
+
+      // إضافة منتج إلى السلة
+      function addToCart() {
+        const detailsContent = document.getElementById("details-content");
+        const index = parseInt(detailsContent.dataset.currentIndex);
+        const product = productsData[index];
+
+        const selectedSize = document.getElementById("sizes-select").value;
+        const selectedColor = document.getElementById("colors-select").value;
+
+        // تحقق إذا نفس المنتج بنفس المقاس واللون موجود
+        const existingIndex = cart.findIndex(
+          (item) =>
+            item.name === product.name &&
+            item.size === selectedSize &&
+            item.color === selectedColor
+        );
+
+        if (existingIndex >= 0) {
+          // زيادة الكمية
+          cart[existingIndex].quantity += 1;
+        } else {
+          // إضافة منتج جديد مع السعر الحالي من data
+          cart.push({
+            name: product.name,
+            size: selectedSize,
+            color: selectedColor,
+            price: product.price,
+            quantity: 1,
+            img: product.mainImage,
+          });
+        }
+
+        updateCartCount();
+        closeDetails();
+        alert("تمت إضافة المنتج إلى السلة!");
+      }
+
+      // عرض محتويات السلة
+      function toggleCart() {
+        const cartModal = document.getElementById("cart");
+        if (cartModal.style.display === "flex") {
+          cartModal.style.display = "none";
+        } else {
+          renderCartItems();
+          cartModal.style.display = "flex";
+        }
+      }
+
+      // رسم محتويات السلة وتحديث الإجمالي
+      function renderCartItems() {
+        const container = document.getElementById("cart-items");
+        container.innerHTML = "";
+
+        if (cart.length === 0) {
+          container.innerHTML = "<p>السلة فارغة</p>";
+          document.getElementById("cart-total").textContent = "";
+          return;
+        }
+
+        cart.forEach((item, i) => {
+          const div = document.createElement("div");
+          div.classList.add("cart-item");
+          div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" />
+        <div class="cart-item-info">
+          <div><strong>${item.name}</strong></div>
+          <div>المقاس: ${item.size}</div>
+          <div>اللون: ${item.color}</div>
+          <div>السعر للوحدة: ${item.price} جنيه</div>
+          <div>الكمية: ${item.quantity}</div>
+          <div>الإجمالي: ${item.price * item.quantity} جنيه</div>
+        </div>
+        <button class="remove-btn" onclick="removeCartItem(${i})">حذف</button>
+      `;
+          container.appendChild(div);
+        });
+
+        // تحديث المجموع
+        updateCartTotal();
+      }
+
+      // تحديث إجمالي السلة حسب الأسعار والكميات الحالية
+      function updateCartTotal() {
+        // المجموع هو جمع (السعر * الكمية) لكل عنصر في السلة
+        const total = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        document.getElementById(
+          "cart-total"
+        ).textContent = `الإجمالي: ${total} جنيه`;
+      }
+
+      // إزالة منتج من السلة
+      function removeCartItem(index) {
+        cart.splice(index, 1);
+        updateCartCount();
+        renderCartItems();
+      }
+
+      // مسح السلة كاملة
+      function clearCart() {
+        if (confirm("هل أنت متأكد من مسح جميع المنتجات من السلة؟")) {
+          cart = [];
+          updateCartCount();
+          renderCartItems();
+          toggleCart();
+        }
+      }
+
+      // تحميل المنتجات عند فتح الصفحة
+      loadProducts();
+    </script>
+  </body>
+</html>

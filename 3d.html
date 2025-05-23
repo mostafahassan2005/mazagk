@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAZAGK</title>
+    <link rel="stylesheet" href="./css/3d.css" />
+  </head>
+  <body>
+    <headder>
+      <div class="container-2 nav">
+        <img class="img" src="./photo/logo.jpeg" alt="" width="120" />
+        <nav class="nav-menu w-nav-menu">
+          <a href="./index.html" class="nav-button navbutton2 w-button">Home</a>
+          <a href="about" class="nav-button navbutton2 w-button">About</a>
+
+          <!-- dark mode -->
+          <div class="checkbox-wrapper">
+            <input type="checkbox" class="check" id="mode-toggle" />
+            <label for="mode-toggle" class="label">
+              <svg width="45" height="45" viewBox="0 0 95 95">
+                <rect
+                  x="30"
+                  y="20"
+                  width="50"
+                  height="50"
+                  stroke="black"
+                  fill="none"
+                ></rect>
+                <g transform="translate(0,-952.36222)">
+                  <path
+                    d="m 56,963 c -102,122 6,9 7,9 17,-5 -66,69 -38,52 122,-77 -7,14 18,4 29,-11 45,-43 23,-4"
+                    stroke="black"
+                    stroke-width="3"
+                    fill="none"
+                    class="path1"
+                  ></path>
+                </g>
+              </svg>
+              <span>Dark Mode</span>
+            </label>
+          </div>
+        </nav>
+      </div>
+    </headder>
+
+    <section class="container">
+      <div class="text">
+        <h1>3D Animated Mockups in Seconds.</h1>
+        <p>
+          Transform your 2D designs into stunning 3D – complete with wind
+          effects, walking animations, and seamless video exports.
+        </p>
+        <button class="create-btn">Create</button>
+      </div>
+      <div class="mockup">
+        <img src="./photo/Hoodiet-3D.jpeg" alt="3D Shirt Mockup" />
+      </div>
+    </section>
+    <br />
+    <br /><br /><br />
+
+    <section class="H-3D">
+      <div class="Hoodiet1">
+        <a href="./Hoodi 3d.html" class="box-3D">
+          <img src="./photo/Hoodiet-3D.jpeg" alt="Hoodie 3D" />
+        </a>
+      </div>
+      <div class="t-shert2">
+        <a href="./t-shert 3d.html" class="box-3D">
+          <img src="./photo/t-shert3D.jpeg" alt="T-Shirt 3D" />
+        </a>
+      </div>
+    </section>
+    <br /><br /><br /><br />
+
+    <section class="contaner">
+      <div class="video">
+        <div class="caracter">
+          <div
+            class="background-video-2 w-background-video w-background-video-atom"
+          >
+            <video autoplay loop muted playsinline>
+              <source src="./photo/viduo-t-shert.mp4" type="video/mp4" />
+              <source src="./photo/viduo-t-shert.webm" type="video/webm" />
+            </video>
+          </div>
+        </div>
+
+        <div class="flex-container">
+          <h2 class="h2 center previewmockup">
+            Preview your Mockup in Realtime
+          </h2>
+          <p class="p p2">
+            No waiting around - visualise your 3D mockups in a live preview.
+            Export Images and Videos instantly.
+          </p>
+          <br />
+          <a
+            id="get-started-btn"
+            href="javascript:void(0);"
+            class="button-4 create w-button"
+          >
+            <strong class="Get">Get Started</strong>
+          </a>
+        </div>
+      </div>
+
+      <div class="Contact">
+        <h3>Contact Us</h3>
+        <div class="mazagk">
+          <img src="./photo/logo.jpeg" alt="Mazagk Logo" />
+        </div>
+        <div class="soshial">
+          <a href="#"
+            ><img title="Instagram" src="./photo/insta.jpeg" alt="Instagram"
+          /></a>
+          <a href="#"
+            ><img title="Facebook" src="./photo/facebook .png" alt="Facebook"
+          /></a>
+          <a href="#"
+            ><img title="Twitter" src="./photo/Twitter.jpeg" alt="Twitter"
+          /></a>
+          <a href="#"
+            ><img title="Tiktok" src="./photo/Tiktok.jpeg" alt="Tiktok"
+          /></a>
+          <a href="#"
+            ><img title="Phone" src="./photo/phone.jpeg" alt="Phone"
+          /></a>
+          <a href="#"
+            ><img title="WhatsApp" src="./photo/whats.png" alt="WhatsApp"
+          /></a>
+          <a href="#"
+            ><img title="Gmail" src="./photo/gamil.jpeg" alt="Gmail"
+          /></a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleSwitch = document.getElementById("mode-toggle");
+
+        if (localStorage.getItem("theme") === "dark") {
+          document.body.classList.add("dark-mode");
+          toggleSwitch.checked = true;
+        }
+
+        toggleSwitch.addEventListener("change", function () {
+          if (this.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+          } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+          }
+        });
+
+        function scrollToTarget() {
+          const target = document.querySelector(".H-3D");
+          if (target) {
+            const offset = 50;
+            const targetPosition =
+              target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: targetPosition, behavior: "smooth" });
+          }
+        }
+
+        document
+          .querySelector(".create-btn")
+          .addEventListener("click", scrollToTarget);
+        document
+          .querySelector("#get-started-btn")
+          .addEventListener("click", scrollToTarget);
+      });
+    </script>
+  </body>
+</html>
