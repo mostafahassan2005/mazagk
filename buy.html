@@ -10,7 +10,7 @@
       <img src="./photo/logo.jpeg" alt="Logo" width="120" />
       <a class="cart-icon" href="index.html">home</a>
       <div id="cart-icon" title="سلة التسوق" onclick="toggleCart()">
-        🛒
+        <img src="./photo/shopping.jpeg" alt="Logo" width="50px" />
         <span id="cart-count">0</span>
       </div>
     </header>
@@ -45,10 +45,12 @@
           <button class="add-to-cart" onclick="addToCart()">
             إضافة إلى السلة
           </button>
+          <button class="add-cart" onclick="addToCart()">
+            BUY2
+          </button>
         </div>
       </div>
     </div>
-    <img src="" alt="" />
     <!-- مودال سلة التسوق -->
     <div
       id="cart"
@@ -60,7 +62,7 @@
         <h2>agkعMaz</h2>
         <div id="cart-items"></div>
         <div id="cart-total"></div>
-        <div id="cart-buy"><button id="cart-buy">BUY</button></div>
+        <div id="cart-buy"><button id="cart-buy">BUY1</button></div><!-- عاوز اعمل buy اعمل conect between buy1andbuy2 -->
       </div>
     </div>
 
@@ -71,7 +73,7 @@
           name: "تصميم 1",
           price: 10,
           sizes: ["S", "M", "L", "XL"],
-          colors: ["أحمر", "أخضر", "أسود"],
+          colors: ["أحمر",  "أسود"],
           mainImage: "./t-shert/a-she-1.png",
           extraImages: [
             "./t-shert/a-sher-1.png",
@@ -83,10 +85,10 @@
           name: "تصميم 2",
           price: 20,
           sizes: ["S", "M", "L", "XL"],
-          colors: ["أحمر", "أخضر", "أسود"],
+          colors: ["ابيض", "أخضر", "رمادي"],
           mainImage: "./t-shert/b-shr-2.png",
           extraImages: [
-            "/t-shert/b-shre-2.png",
+            "./t-shert/b-shre-2.png",
             "./t-shert/b-shret-2.png",
             "./t-shert/b-shr-2.png",
           ],
@@ -95,12 +97,12 @@
           name: "تصميم 3",
           price: 30,
           sizes: ["S", "M", "L", "XL"],
-          colors: ["أحمر", "أخضر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
+          colors: ["ازرق", "زيتي", "أسود"],
+          mainImage: "./t-shert/c-shr-3.png",
           extraImages: [
-            "./photo/tshirt3-back.jpg",
-            "./photo/tshirt3-model.jpg",
-            "./photo/tshirt3-detail.jpg",
+            "./t-shert/c-shre-3.png",
+            "./t-shert/c-shret-3.png",
+            "./t-shert/c-shr-3.png",
           ],
         },
         {
@@ -108,11 +110,11 @@
           price: 40,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أزرق", "أصفر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
+          mainImage: "./t-shert/d-shret-4.png",
           extraImages: [
-            "./photo/tshirt3-back.jpg",
-            "./photo/tshirt3-model.jpg",
-            "./photo/tshirt3-detail.jpg",
+            "./t-shert/d-shre-4.png",
+            "./t-shert/d-shret-4.png",
+            "./t-shert/d-shr-4.png",
           ],
         },
         {
@@ -120,18 +122,23 @@
           price: 50,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أبيض", "أسود"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+          mainImage: "./t-shert/e-shret-5.png",
+          extraImages: [
+            "./t-shert/e-shre-5.png",
+            "./t-shert/e-shret-5.png",
+            "./t-shert/e-shr-5.png",
+          ],
         },
         {
           name: "تصميم 6",
           price: 60,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أخضر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
+          mainImage: "./t-shert/f-shret-6.png",
           extraImages: [
-            "./photo/tshirt3-back.jpg",
-            "./photo/tshirt3-model.jpg",
+            "./t-shert/f-shre-6.png",
+            "./t-shert/f-shret-6.png",
+            "./t-shert/f-shr-6.png",
           ],
         },
         {
@@ -139,18 +146,23 @@
           price: 70,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أزرق", "أخضر", "أسود"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+          mainImage: "./t-shert/g-shret-7.png",
+          extraImages: [
+            "./t-shert/g-shre-7.png",
+            "./t-shert/g-shret-7.png",
+            "./t-shert/g-shr-7.png",
+          ],
         },
         {
           name: "تصميم 8",
           price: 80,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أصفر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
+          mainImage: "./t-shert/h-shr-8.png",
           extraImages: [
-            "./photo/tshirt3-back.jpg",
-            "./photo/tshirt3-model.jpg",
+            "./t-shert/h-shre-8.png",
+            "./t-shert/h-shret-8.png",
+            "./t-shert/h-shr-8.png",
           ],
         },
         {
@@ -158,18 +170,23 @@
           price: 70,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أخضر", "أصفر", "أسود"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/Hoodiet-3D.jpeg", "./photo/logo.jpeg"],
+          mainImage: "./t-shert/a-sher-1.png",
+          extraImages: [
+            "./t-shert/a-sher-1.png",
+            "./t-shert/a-she-1.png",
+            "./t-shert/a-shret-1.png",
+          ],
         },
         {
           name: "تصميم 10",
           price: 80,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أزرق", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
+          mainImage: "./t-shert/h-shret-8.png",
           extraImages: [
-            "./photo/tshirt3-back.jpg",
-            "./photo/tshirt3-model.jpg",
+            "./t-shert/h-shre-8.png",
+            "./t-shert/h-shret-8.png",
+            "./t-shert/h-shr-8.png",
           ],
         },
         {
@@ -177,64 +194,96 @@
           price: 90,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أخضر", "أسود"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/Hoodiet-3D.jpeg"],
+          mainImage: "./t-shert/f-shre-6.png",
+         extraImages: [
+            "./t-shert/f-shre-6.png",
+            "./t-shert/f-shret-6.png",
+            "./t-shert/f-shr-6.png",
+          ],
         },
         {
           name: "تصميم 12",
           price: 100,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أصفر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
-          extraImages: ["./photo/tshirt3-model.jpg"],
+          mainImage: "./t-shert/e-shr-5.png",
+          extraImages: [
+            "./t-shert/e-shre-5.png",
+            "./t-shert/e-shret-5.png",
+            "./t-shert/e-shr-5.png",
+          ],
         },
         {
           name: "تصميم 13",
           price: 200,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أخضر"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/logo.jpeg"],
+          mainImage: "./t-shert/g-shr-7.png",
+         extraImages: [
+            "./t-shert/g-shre-7.png",
+            "./t-shert/g-shret-7.png",
+            "./t-shert/g-shr-7.png",
+          ],
         },
         {
           name: "تصميم 14",
           price: 300,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أزرق", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
-          extraImages: ["./photo/tshirt3-detail.jpg"],
+          mainImage: "./t-shert/c-shre-3.png",
+          extraImages: [
+            "./t-shert/c-shre-3.png",
+            "./t-shert/c-shret-3.png",
+            "./t-shert/c-shr-3.png",
+          ],
         },
         {
           name: "تصميم 15",
           price: 400,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أصفر"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/logo.jpeg"],
+          mainImage: "./t-shert/b-shret-2.png",
+          extraImages: [
+            "./t-shert/b-shre-2.png",
+            "./t-shert/b-shret-2.png",
+            "./t-shert/b-shr-2.png",
+          ],
         },
         {
           name: "تصميم 16",
           price: 500,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أخضر", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
-          extraImages: ["./photo/tshirt3-back.jpg"],
+          mainImage: "./t-shert/e-shr-5.png",
+          extraImages: [
+            "./t-shert/e-shre-5.png",
+            "./t-shert/e-shret-5.png",
+            "./t-shert/e-shr-5.png",
+          ],
         },
         {
           name: "تصميم 17",
           price: 600,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أحمر", "أخضر"],
-          mainImage: "./photo/Hoodiet-3D.jpeg",
-          extraImages: ["./photo/logo.jpeg"],
+          mainImage: "./t-shert/e-shret-5.png",
+          extraImages: [
+            "./t-shert/e-shre-5.png",
+            "./t-shert/e-shret-5.png",
+            "./t-shert/e-shr-5.png",
+          ],
         },
         {
           name: "تصميم 18",
           price: 700,
           sizes: ["S", "M", "L", "XL"],
           colors: ["أزرق", "أسود"],
-          mainImage: "./photo/tshirt3-front.jpg",
-          extraImages: ["./photo/tshirt3-model.jpg"],
+          mainImage: "./t-shert/e-shre-5.png",
+          extraImages: [
+            "./t-shert/e-shre-5.png",
+            "./t-shert/e-shret-5.png",
+            "./t-shert/e-shr-5.png",
+          ],
         },
         {
           name: "تصميم 19",
@@ -383,7 +432,7 @@
 
         updateCartCount();
         closeDetails();
-        alert("تمت إضافة المنتج إلى السلة!");
+        // alert("تمت إضافة المنتج إلى السلة!");
       }
 
       // عرض محتويات السلة
